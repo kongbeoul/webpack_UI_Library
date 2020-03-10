@@ -1,9 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
-    <meta charset="UTF-8">
-    <title>Webpack App</title>
-  </head>
-  <body>
-  <script type="text/javascript" src="bundle.js"></script></body>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  <link href="/dist/style.css" rel="stylesheet"></head>
+  <body style="height:1000px">
+    <div class="c-tabs js-tabs">
+      <ul class="c-tabs-tablist js-tabs-tablist">
+        <li class="c-tabs-tab c-tabs-tab--active" data-tab-id="tab1">
+          <button>1</button>
+        </li>
+        <li class="c-tabs-tab" data-tab-id="tab2">
+          <button>2</button>
+        </li>
+        <li class="c-tabs-tab" data-tab-id="tab3">
+          <button>3</button>
+        </li>
+      </ul>
+      <div class="c-tabs-items">
+        <div class="c-tabs-item js-tabs-item" data-tab-id="tab1">컨텐츠 1</div>
+        <div class="c-tabs-item js-tabs-item" data-tab-id="tab2">컨텐츠 2</div>
+        <div class="c-tabs-item js-tabs-item" data-tab-id="tab3">컨텐츠 3</div>
+      </div>
+    </div>
+    <div class="c-accordion js-accordion">
+      <div class="c-accordion-item js-accordion-item">
+        <button type="button" class="c-accordion-title js-accordion-title">아코디언 타이틀</button>
+        <div class="c-accordion-copy">
+          <p>
+            Here is my attempt at creating a object oriented-ish accordion using BEM CSS guidlines. This accordion is fully responsive and completely barebones, making it easy to style however you
+            want
+          </p>
+        </div>
+      </div>
+      <div class="c-accordion-item js-accordion-item">
+        <button type="button" class="c-accordion-title js-accordion-title">아코디언 타이틀</button>
+        <div class="c-accordion-copy">
+          <p>
+            Here is my attempt at creating a object oriented-ish accordion using BEM CSS guidlines. This accordion is fully responsive and completely barebones, making it easy to style however you
+            want
+          </p>
+        </div>
+      </div>
+      <div class="c-accordion-item js-accordion-item">
+        <button type="button" class="c-accordion-title">아코디언 타이틀</button>
+        <div class="c-accordion-copy">
+          <p>
+            Here is my attempt at creating a object oriented-ish accordion using BEM CSS guidlines. This accordion is fully responsive and completely barebones, making it easy to style however you
+            want
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      var a = null,
+        b = null;
+      window.addEventListener("DOMContentLoaded", function() {
+        a = new APP.Tabs(".js-tabs");
+        b = new APP.Accordions(".js-accordion");
+        APP.Scrollable.instance.add(function(viewTop, viewHeight, viewBottom) {
+          console.log(viewTop, viewHeight, viewBottom);
+        });
+      });
+    </script>
+  <script type="text/javascript" src="/dist/main.js"></script></body>
 </html>

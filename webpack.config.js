@@ -1,6 +1,8 @@
 const path = require("path");
 const merge = require("webpack-merge");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 
@@ -29,7 +31,7 @@ const config = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader"
+            loader: env == "development" ? "style-loader" : MiniCssExtractPlugin.loader
           },
           {
             loader: "css-loader",
@@ -54,6 +56,12 @@ const config = {
     ]
   },
   plugins: [
+    new LodashModuleReplacementPlugin({
+      collections: true
+    }),
+    new MiniCssExtractPlugin({
+      filename: "style.css"
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src/index.html"),
       filename: "index.html"
@@ -63,7 +71,8 @@ const config = {
     path: path.resolve(__dirname, "dist"),
     library: "APP",
     libraryTarget: "umd",
-    filename: "bundle.js"
+    filename: "[name].js",
+    publicPath: "/dist/"
   },
   optimization: {
     splitChunks: {

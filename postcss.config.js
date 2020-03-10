@@ -1,4 +1,4 @@
-module.exports = ({ ctx }) => {
+module.exports = ({ env }) => {
   return {
     plugins: [
       require("postcss-import")({}),
@@ -10,7 +10,11 @@ module.exports = ({ ctx }) => {
         preserve: false,
         autoprefixer: true,
         importFrom: "./src/css/variables.css"
-      })
+      }),
+      env == "production" &&
+        require("cssnano")({
+          preset: "default"
+        })
     ]
   };
 };

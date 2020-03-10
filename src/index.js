@@ -1,7 +1,7 @@
-const init = () => {
-  console.log(1234);
-};
+import TabView from "@/Tab.js";
+import AccordionView from "@/Accordion";
+import Scrollable from "@/Scrollable";
 
-const addEvent = () => console.log(5678);
+import "./css/style.css";
 
-export { init, addEvent };
+export { TabView as Tabs, AccordionView as Accordions, Scrollable };

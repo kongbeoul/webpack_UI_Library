@@ -1,0 +1,14 @@
+@import "reset-css";
+@import "normalize.css";
+
+.c-accordion {
+  & .c-accordion-item .c-accordion-copy {
+    height: 0;
+    transition: height ease-out 0.25s;
+    overflow: hidden;
+  }
+
+  & .c-accordion-item--active .c-accordion-copy {
+    height: auto;
+  }
+}
